@@ -6,7 +6,9 @@ import Link from "next/link";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const { status } = useSession();
+  const { status, data: session } = useSession(); // Destructure the session data
+
+  const isAdmin = session?.user?.email === "thejayadad@gmail.com";
 
   return (
     <>
@@ -15,7 +17,7 @@ const AuthLinks = () => {
           <Link href="/login" className="hidden">
             <FaSignInAlt /> Login
           </Link>
-        </>
+        </> 
       ) : (
         <>
           <div className="hidden lg:inline-flex  gap-4  items-center sm:hidden">
@@ -25,6 +27,11 @@ const AuthLinks = () => {
             <span onClick={signOut} className="">
               <FaSignOutAlt className="" /> <span style={{fontSize: '8px'}}>LogOut</span>
             </span>
+            {isAdmin && (
+              <Link href="/admin" className="link">
+                Admin
+              </Link>
+            )}
           </div>
         </>
       )} 
@@ -45,20 +52,26 @@ const AuthLinks = () => {
           <Link href="/" className="link">
             Contact
           </Link>
+   
+          {isAdmin && (
+            <Link href="/dashboard" className="link">
+              Admin
+            </Link>
+          )}
           {status === "notauthenticated" ? (
             <Link href="/login" className="link">
               <FaSignInAlt /> Login
             </Link>
           ) : (
             <>
-          <div className="flex bg-whitem gap-4">
-          <Link href="/cart">
-                Cart
-              </Link>
-              <span onClick={signOut} className="flex items-center">
-                <FaSignOutAlt /> <span style={{fontSize: '8px'}}>LogOut</span>
-              </span>
-          </div>
+              <div className="flex bg-whitem gap-4">
+                <Link href="/cart">
+                  Cart
+                </Link>
+                <span onClick={signOut} className="flex items-center">
+                  <FaSignOutAlt /> <span style={{fontSize: '8px'}}>LogOut</span>
+                </span>
+              </div>
             </>
           )}
         </div>
