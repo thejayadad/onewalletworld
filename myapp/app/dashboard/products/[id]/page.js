@@ -57,7 +57,7 @@ const SingleProduct = (ctx) => {
                      <td 
                   className="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
-                    <Link className='mr-4' href={'/dashboard/products/${product._id/edit'}>Edit</Link>
+                    <Link className='mr-4' href={`/dashboard/products/edit/${ctx.params.id}`}>Edit</Link>
                     <button >Delete</button>
                   </td>
                 </tr>
