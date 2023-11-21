@@ -4,7 +4,7 @@ import React from 'react'
 
 const ProductCard = ({product: {title, desc, price, images, _id}}) => {
   return (
-  <Link href={`/product/${_id}`}>
+  <Link href={`/dashboard/products/${_id}`}>
     <img src={images} alt='pic' />
     <span>{title}</span>
     <p>{price}</p>
