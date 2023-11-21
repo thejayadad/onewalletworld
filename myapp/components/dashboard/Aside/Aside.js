@@ -18,7 +18,7 @@ const Aside = () => {
           </div>
           <ul className="lg:flex lg:flex-col sm:flex sm:flex-row sm:justify-between">
             <li className="flex items-center space-x-2 mb-2">
-              <Link href="/admin/">
+              <Link href="/dashboard/">
                 <span className={`flex items-center space-x-2 transition duration-300 p-2 rounded-lg ${isActive('/admin/') ? 'bg-purple-300' : ''}`}>
                   <FaHome className="text-blue-500" />
                   <span>Dashboard</span>
@@ -26,7 +26,7 @@ const Aside = () => {
               </Link>
             </li>
             <li className="flex items-center space-x-2 mb-2">
-              <Link href="/admin/products">
+              <Link href="/dashboard/products">
                 <span className={`flex items-center space-x-2 transition duration-300 p-2 rounded-lg ${isActive('/admin/products') ? 'bg-gray-300' : ''}`}>
                   <FaShoppingCart className="text-green-500" />
                   <span className="lg:inline">Products</span>
@@ -34,7 +34,7 @@ const Aside = () => {
               </Link>
             </li>
             <li className="flex items-center space-x-2 mb-2">
-              <Link href="/admin/orders">
+              <Link href="/dashboard/orders">
                 <span className={`flex items-center space-x-2 transition duration-300 p-2 rounded-lg ${isActive('/admin/orders') ? 'bg-purple-300' : ''}`}>
                   <FaClipboardList className="text-yellow-500" />
                   <span>Orders</span>
@@ -42,7 +42,7 @@ const Aside = () => {
               </Link>
             </li>
             <li className="flex items-center space-x-2 mb-2">
-              <Link href="/admin/settings">
+              <Link href="/dashboard/settings">
                 <span className={`flex items-center space-x-2 transition duration-300 p-2 rounded-lg ${isActive('/admin/settings') ? 'bg-gray-300' : ''}`}>
                   <FaCog className="text-red-500" />
                   <span className="lg:inline">Settings</span>
@@ -50,7 +50,7 @@ const Aside = () => {
               </Link>
             </li>
             <li className="flex items-center lg:flex lg:flex-row space-x-2 mb-2">
-              <Link href="/admin/users">
+              <Link href="/dashboard/users">
                 <span className={`flex items-center space-x-2 transition duration-300 p-2 rounded-lg ${isActive('/admin/users') ? 'bg-gray-300' : ''}`}>
                   <FaUsers className="text-purple-500" />
                   <span className="lg:inline">Users</span>

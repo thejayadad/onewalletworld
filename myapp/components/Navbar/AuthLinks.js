@@ -28,8 +28,8 @@ const AuthLinks = () => {
               <FaSignOutAlt className="" /> <span style={{fontSize: '8px'}}>LogOut</span>
             </span>
             {isAdmin && (
-              <Link href="/admin" className="link">
-                Admin
+              <Link href="/dashboard" className="link">
+                Dashboard
               </Link>
             )}
           </div>
