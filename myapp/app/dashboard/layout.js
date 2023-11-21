@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }) {
             <span className=" col-span-6 md:col-span-2">
             <Aside />            
             </span>
-            <sppan className="bg-orange-200 col-span-6 min-h-screen">        {children}
+            <sppan className="col-span-6 min-h-screen">        {children}
 </sppan>
 
         </section>

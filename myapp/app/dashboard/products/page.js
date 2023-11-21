@@ -1,40 +1,35 @@
-'use client'
-import React, { useState } from 'react';
 
-const Products = () => {
-  const [activeTab, setActiveTab] = useState('newProducts');
+import ProductCard from '@/components/ProductList/ProductCard'
+import Link from 'next/link'
+import React from 'react'
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
 
-  return (
-    <section>
-      <div className="flex justify-center mt-8">
-        <button
-          className={`${
-            activeTab === 'newProducts' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'
-          } px-4 py-2 mx-2 rounded focus:outline-none`}
-          onClick={() => handleTabClick('newProducts')}
-        >
-          New Products
-        </button>
-        <button
-          className={`${
-            activeTab === 'allProducts' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'
-          } px-4 py-2 mx-2 rounded focus:outline-none`}
-          onClick={() => handleTabClick('allProducts')}
-        >
-          All Products
-        </button>
-    </div>
-
-      {activeTab === 'newProducts' && <div>New Products Content
-        
-        </div>}
-      {activeTab === 'allProducts' && <div>All Products Content</div>}
-    </section>
-  );
-};
-
-export default Products;
+export async function fetchProducts(){
+    const res = await fetch('http://localhost:3000/api/product', {cache: 'no-store'})
+  
+    return res.json()
+  }
+  
+  
+  export default async function Home() {
+    const products = await fetchProducts()
+  
+    return (
+     <main>
+      <div className='flex'>
+      <Link href={'/dashboard/products/'}>
+            All Products
+        </Link>
+        <Link href={'/dashboard/products/new'}>
+            NewProduct
+        </Link>
+      </div>
+     
+      {products?.length > 0 
+         ? products.map((product) => (
+          <ProductCard key={product._id} product={product}/>
+        )) : <h3>Products Loading</h3>}
+     </main>
+    )
+  }
+  
