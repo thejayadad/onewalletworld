@@ -18,6 +18,24 @@ const SingleProduct = (ctx) => {
         }
        fetchProduct()
     }, [ctx.params.id])
+
+    const handleDelete = async () => {
+        try {
+            const confirmModal = confirm("Are you sure you want to delete your product?")
+
+            if (confirmModal) {
+                const res = await fetch(`http://localhost:3000/api/product/${ctx.params.id}`, {
+                    method: "DELETE"
+                })
+
+                if (res.ok) {
+                    router.push("http://localhost:3000/dashboard/products"); 
+                }
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
   return (
     <section>
         <ProductNav />
@@ -58,7 +76,9 @@ const SingleProduct = (ctx) => {
                   className="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
                     <Link className='mr-4' href={`/dashboard/products/edit/${ctx.params.id}`}>Edit</Link>
-                    <button >Delete</button>
+                    <button 
+                    onClick={handleDelete}
+                    >Delete</button>
                   </td>
                 </tr>
             </tbody>
