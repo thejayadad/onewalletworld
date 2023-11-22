@@ -36,14 +36,16 @@ const AuthLinks = () => {
         </>
       )} 
       <span
-        className="lg:hidden md:flex-row cursor-pointer"
+        className="lg:hidden cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        {open ? <FaTimes className="top-0" /> : <FaBars />}
+        {open ? <FaTimes /> : <FaBars />}
       </span>
       {open && (
-        <div className="bg-blue-200 h-48  flex flex-col items-center justify-center gap-2 w-full">
-          <Link href="/" className="link">
+        <div className="bg-blue-200 h-48 flex flex-col items-center justify-center gap-2 w-full absolute top-3 left-0 right-0"
+        style={{zIndex: '-1px'}}
+        >
+        <Link href="/" className="link">
             Homepage
           </Link>
           <Link href="/" className="link">

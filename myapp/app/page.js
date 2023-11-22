@@ -13,7 +13,7 @@ export default async function Home() {
   const products = await fetchProducts()
 
   return (
-   <main>
+   <main className=''>
     homePage
    
     {products?.length > 0 
