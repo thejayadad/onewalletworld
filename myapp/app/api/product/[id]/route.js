@@ -37,9 +37,8 @@ export async function PUT(req, ctx) {
 
     try {
         const body = await req.json()
-        const product = await Product.findById(id)
 
-        const updatedProduct = await ProductfindByIdAndUpdate(id, { $set: { ...body } }, { new: true })
+        const updatedProduct = await Product.findByIdAndUpdate(id, { $set: { ...body } }, { new: true })
 
         return new Response(JSON.stringify(updatedProduct), { status: 200 })
     } catch (error) {
