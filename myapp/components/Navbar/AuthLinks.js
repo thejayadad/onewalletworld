@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { FaSignInAlt, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaBars, FaTimes, FaShoppingCart } from 'react-icons/fa';
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
@@ -22,10 +22,10 @@ const AuthLinks = () => {
         <>
           <div className="hidden lg:inline-flex  gap-4  items-center sm:hidden">
             <Link href="/cart" className="link">
-              Cart
+              <FaShoppingCart />
             </Link>
             <span onClick={signOut} className="">
-              <FaSignOutAlt className="" /> <span style={{fontSize: '8px'}}>LogOut</span>
+            <span>LogOut</span>
             </span>
             {isAdmin && (
               <Link href="/dashboard" className="link">
@@ -36,13 +36,13 @@ const AuthLinks = () => {
         </>
       )} 
       <span
-        className="lg:hidden cursor-pointer bg-red-300"
+        className="lg:hidden md:flex-row cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        {open ? <FaTimes /> : <FaBars />}
+        {open ? <FaTimes className="top-0" /> : <FaBars />}
       </span>
       {open && (
-        <div className="bg-blue-200 h-48 flex flex-col items-center justify-center gap-2 w-full">
+        <div className="bg-blue-200 h-48  flex flex-col items-center justify-center gap-2 w-full">
           <Link href="/" className="link">
             Homepage
           </Link>
@@ -64,12 +64,12 @@ const AuthLinks = () => {
             </Link>
           ) : (
             <>
-              <div className="flex bg-whitem gap-4">
-                <Link href="/cart">
-                  Cart
+              <div className="flex items-center gap-4">
+                <Link  href="/cart">
+                  <FaShoppingCart />
                 </Link>
                 <span onClick={signOut} className="flex items-center">
-                  <FaSignOutAlt /> <span style={{fontSize: '8px'}}>LogOut</span>
+              <span>LogOut</span>
                 </span>
               </div>
             </>
